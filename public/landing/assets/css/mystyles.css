@@ -1,0 +1,54 @@
+@font-face {
+	font-family: "MyLogoFont";
+	src: local("MyLogoFont"), url("../fonts/barbara.otf") format("opentype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	font-family: "Quicksand", sans-serif;
+}
+
+.logo-my-font {
+	font-family: MyLogoFont;
+	letter-spacing: 1px;
+}
+
+.navbar-logo {
+	font-size: 28px;
+	position: relative;
+	top: 5px;
+	padding-left: 10px;
+}
+
+.navbar-link {
+	display: flex;
+	align-items: center;
+}
+
+.btn {
+	border-radius: 0.3rem !important;
+}
+
+.bg-dark-1 {
+	background-color: #17202a;
+	color: white;
+}
+
+.bg-dark-2 {
+	background-color: #1b2631;
+	color: white;
+}
+
+.text-offwhite {
+	color: whitesmoke;
+}
+
+.text-myorange {
+	color: #ed6524;
+}
+
+.navbar-brand {
+	padding: 12px;
+	padding-bottom: 0;
+}
