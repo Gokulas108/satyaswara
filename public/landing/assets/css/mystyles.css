@@ -7,6 +7,7 @@
 
 body {
 	font-family: "Quicksand", sans-serif;
+	color: #273746;
 }
 
 .logo-my-font {
@@ -15,29 +16,84 @@ body {
 }
 
 .navbar-logo {
-	font-size: 28px;
+	font-size: 35px;
 	position: relative;
-	top: 5px;
-	padding-left: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+	.desktop-only {
+		display: none;
+	}
+
+	.navbar-logo {
+		font-size: 30px;
+		position: relative;
+	}
+
+	.navbar-link {
+		justify-content: center;
+	}
+
+	.branding {
+		width: 100%;
+	}
+}
+
+.justify {
+	text-align: justify;
+	text-justify: inter-word;
 }
 
 .navbar-link {
 	display: flex;
 	align-items: center;
+	margin-left: -15px;
+}
+
+.fixed-bg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.bg-1 {
+	background-image: url("../images/bg-1-1.png");
+}
+/* 
+@media only screen and (max-width: 1024px) {
+	.bg-1 {
+		background-attachment: initial;
+	}
+} */
+
+.bg-2 {
+	background-image: url("../images/bg-2.png");
+}
+
+.bg-3 {
+	background-image: url("../images/bg-3.png");
 }
 
 .btn {
 	border-radius: 0.3rem !important;
 }
 
+.view-height {
+	min-height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .bg-dark-1 {
-	background-color: #17202a;
-	color: white;
+	background-color: #fdedec;
 }
 
 .bg-dark-2 {
 	background-color: #1b2631;
 	color: white;
+}
+.bg-dark-3 {
+	background-color: #283747;
 }
 
 .text-offwhite {
@@ -48,7 +104,114 @@ body {
 	color: #ed6524;
 }
 
+.item-heading {
+	font-size: 1.5rem !important;
+}
+
+.item-desc {
+	font-size: 1.125rem;
+}
+
 .navbar-brand {
 	padding: 12px;
 	padding-bottom: 0;
+}
+
+.mylist {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 1em;
+	text-indent: -1em;
+}
+/* Create three columns of equal width */
+.columns {
+	/* float: left; */
+	padding: 8px;
+	width: 300px;
+}
+
+.pricing-container {
+	display: flex;
+	justify-content: center;
+	align-self: center;
+}
+
+/* Style the list */
+.price {
+	list-style-type: none;
+	border: 1px solid #fdedec;
+	background-color: #fdedec;
+	border-radius: 10px;
+	margin: 0;
+	padding: 0;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.bg-price-dark {
+	background-color: #1b2631 !important;
+}
+
+.bg-price-dark li {
+	background-color: #1b2631 !important;
+	border: 1px solid #1b2631 !important;
+	color: #fdedec !important;
+}
+
+/* Add shadows on hover */
+.price:hover {
+	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Pricing header */
+.price .header {
+	color: black;
+	font-size: 20px;
+	padding: 0;
+}
+
+.price .price-icon {
+	padding: 10px 10px 0;
+	font-size: 40px;
+}
+
+/* List items */
+.price li {
+	border-bottom: 1px solid #fdedec;
+	background-color: #fdedec;
+	padding: 10px 20px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+/* Grey list item */
+.price .cost {
+	font-size: 68px;
+	font-weight: bold;
+	font-family: sans-serif;
+	color: black;
+}
+
+/* The "Sign Up" button */
+.button {
+	background-color: #04aa6d;
+	border: none;
+	color: white;
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+/* Change the width of the three columns to 100%
+  (to stack horizontally on small screens) */
+@media only screen and (max-width: 600px) {
+	.columns {
+		width: 100%;
+	}
+}
+
+.icon-large {
+	font-size: 5rem !important;
 }
