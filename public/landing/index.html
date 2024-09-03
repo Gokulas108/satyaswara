@@ -41,7 +41,7 @@
     <!--//header-->
 
     <section class="hero-section view-height bg-1 fixed-bg">
-      <div class="branding">
+      <div class="branding container mt-2">
         <div class="container-fluid position-relative py-3">
           <div class="logo-wrapper">
             <div class="site-logo">
@@ -81,8 +81,9 @@
               <div class="cta-holder row gx-md-3 gy-3 gy-md-0">
                 <div class="col-12 col-md-auto">
                   <a
+                  target="_blank"
                     class="btn btn-primary w-100"
-                    href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/devbook-free-bootstrap-5-book-ebook-landing-page-template-for-developers/"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSc2JbLk9g_KLFD4hFTk1QXNI3nM0lfznWpL2QPSkhXL_Z7CYQ/viewform?usp=sf_link"
                     >REGISTER NOW</a
                   >
                 </div>
@@ -295,7 +296,7 @@
                 <li class="header">Group Lessons</li>
                 <li class="cost">$27</li>
                 <li class="">4 Classes / month</li>
-                <li class="grey"><a href="#" class="btn btn-primary mb-1">Sign Up</a></li>
+                <li class="grey"><a href="https://docs.google.com/forms/d/e/1FAIpQLSc2JbLk9g_KLFD4hFTk1QXNI3nM0lfznWpL2QPSkhXL_Z7CYQ/viewform?usp=sf_link" target="_blank" class="btn btn-primary mb-1">Sign Up</a></li>
               </ul>
               </div>
           </div>
@@ -309,7 +310,7 @@
                 <li class="header">Private Lessons</li>
                 <li class="cost">$35</li>
                 <li class="">4 Classes / month</li>
-                <li class="grey"><a href="#" class="btn btn-primary mb-1">Sign Up</a></li>
+                <li class="grey"><a href="https://docs.google.com/forms/d/e/1FAIpQLSc2JbLk9g_KLFD4hFTk1QXNI3nM0lfznWpL2QPSkhXL_Z7CYQ/viewform?usp=sf_link" target="_blank" class="btn btn-primary mb-1">Sign Up</a></li>
               </ul>
               </div>
           </div>
@@ -328,9 +329,10 @@
             Feel free to contact us! Our team is ready to provide you <br/> with any information you may need.
           </div>
           <div class="form-wrapper mx-auto">
-            <form class="signup-form row g-2 align-items-center">
+            <form id="form-mail" class="signup-form row g-2 align-items-center">
+
               <div class="col-12">
-                <label class="sr-only" for="semail">Email</label>
+                <label class="sr-only" for="name">Name</label>
                 <input
                   type="name"
                   id="name"
@@ -344,17 +346,16 @@
                 <input
                   type="email"
                   id="semail"
-                  name="semail1"
+                  name="semail"
                   class="form-control me-md-1 semail"
                   placeholder="Your Email"
                 />
               </div>
               <div class="col-12">
-                <label class="sr-only" for="semail">Email</label>
+                <label class="sr-only" for="query">Query</label>
                 <textarea
-                  type="email"
-                  id="semail"
-                  name="semail1"
+                  id="query"
+                  name="query"
                   class="form-control me-md-1 semail"
                   placeholder="Enter Your Query..."
                   rows="7"
@@ -362,9 +363,7 @@
                 ></textarea>
               </div>
               <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-submit w-100">
-                  Send
-                </button>
+                <input id="submit-button" type="button" onclick="SubForm();" class="btn btn-primary btn-submit w-100" value="Send"/>
               </div>
             </form>
             <!--//signup-form-->
@@ -417,7 +416,7 @@
             About 5 years ago, I began teaching these bhajans and kirtans to both children and adults.
             Now, I am eager to spread the love of music to a wider audience. Join us and start your journey today!
           </p>
-          <div class="author-links text-center pt-4">
+          <!-- <div class="author-links text-center pt-4">
             <h5 class="text-white mb-4">Follow Author</h5>
             <ul class="social-list list-unstyled">
               <li class="list-inline-item">
@@ -442,8 +441,7 @@
                 ></a>
               </li>
             </ul>
-            <!--//social-list-->
-          </div>
+          </div> -->
           <!--//author-links-->
         </div>
         <!--//author-bio-->
@@ -473,5 +471,28 @@
     <script src="landing/assets/plugins/smoothscroll.min.js"></script>
 
     <script src="landing/assets/js/main.js"></script>
+
+    <script>
+      function SubForm (){
+
+        document.getElementById("submit-button").value = "Submitting..."
+        let formData = new FormData();
+        formData.append('name', document.getElementById("name").value);
+        formData.append('email', document.getElementById("semail").value);
+        formData.append('query', document.getElementById("query").value);
+        formData.append('access_key', 'd4e8ce85-252f-4186-a7ab-3f064755e9dd');
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        }).then(response => {
+          document.getElementById("form-mail").innerHTML = "<p style='text-align:center;font-size:24px;margin:60px 0px'>Thank you for reaching out to us!<br/> We'll get back to you soon.</p>" 
+        }
+        ).catch(error => {
+          document.getElementById("form-mail").innerHTML = "<p style='text-align:center;font-size:24px;margin:60px 0px'>An Error Occured!<br/> Refresh the page and try again.</p>" 
+        }
+        );
+      }
+    </script>
   </body>
 </html>
