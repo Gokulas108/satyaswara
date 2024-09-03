@@ -82,6 +82,8 @@ body {
 	min-height: 100vh;
 	display: flex;
 	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
 .bg-dark-1 {
