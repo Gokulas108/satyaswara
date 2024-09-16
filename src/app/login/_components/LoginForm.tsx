@@ -74,6 +74,7 @@ const LoginForm = () => {
 			provider: "google",
 			options: {
 				// redirectTo: "http://localhost:3000/dashboard",
+				redirectTo: "https://www.satyaswara.com/dashboard",
 				queryParams: {
 					prompt: "consent",
 					access_type: "offline",
