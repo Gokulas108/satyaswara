@@ -6,9 +6,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader } from "lucide-react";
 
-export const description =
-	"An application shell with a header and main content area. The header has a navbar, a search input and and a user nav dropdown. The user nav is toggled by a button with an avatar image.";
-
 const DashboardPage = () => {
 	const supabase = createClient();
 	const [session, setSession] = useState<any>(null);
