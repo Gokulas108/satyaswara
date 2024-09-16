@@ -72,21 +72,21 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 
 		// Filter for classes with future dates and sort them in ascending order
 		const upcomingClasses = classes
-			.filter((classObj: any) => new Date(classObj.date) > today)
+			?.filter((classObj: any) => new Date(classObj.date) > today)
 			.sort(
 				(a: any, b: any) =>
 					new Date(a.date).getTime() - new Date(b.date).getTime()
 			);
 
 		// Return the first upcoming class, or null if no future classes
-		return upcomingClasses.length > 0 ? upcomingClasses[0] : null;
+		return upcomingClasses?.length > 0 ? upcomingClasses[0] : null;
 	};
 
 	const getTodaysClass = (classes: any) => {
 		const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
 
 		// Find the class that has today's date
-		return classes.find((classObj: any) => classObj.date === today) || null;
+		return classes?.find((classObj: any) => classObj.date === today) || null;
 	};
 
 	const formatDate = (dateString: string) => {
@@ -146,7 +146,7 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 				</div>
 			</header>
 			<main className="grid flex-1 items-start gap-4 p-4 sm:px-6 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
-				{enrolled === "assigned" && classes ? (
+				{enrolled === "assigned" && classes?.length > 0 ? (
 					<>
 						<div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
 							<div className="grid gap-4 sm:grid-cols-2 md:grid-cols-2">
@@ -159,17 +159,17 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 														Today&apos;s Class
 													</CardDescription>
 													<CardTitle className="text-4xl">
-														Week {mainClass.week_no}: {mainClass.topic}
+														Week {mainClass?.week_no}: {mainClass?.topic}
 													</CardTitle>
 													<CardDescription className="max-w-lg text-balance leading-relaxed">
-														{mainClass.batch} Batch&nbsp;&nbsp;|&nbsp;&nbsp;
-														{mainClass.time}
+														{mainClass?.batch} Batch&nbsp;&nbsp;|&nbsp;&nbsp;
+														{mainClass?.time}
 													</CardDescription>
 												</CardHeader>
 												<CardFooter>
 													<Button
 														onClick={() => {
-															openUrlInNewTab(mainClass.class_link);
+															openUrlInNewTab(mainClass?.class_link);
 														}}
 													>
 														Join Class
@@ -183,14 +183,14 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 														Upcoming Class
 													</CardDescription>
 													<CardTitle className="text-4xl">
-														Week {mainClass.week_no}: {mainClass.topic}
+														Week {mainClass?.week_no}: {mainClass?.topic}
 													</CardTitle>
 
 													<CardDescription className="max-w-lg text-balance leading-relaxed">
-														{mainClass.batch} Batch&nbsp;&nbsp;|&nbsp;&nbsp;
-														{formatDate(mainClass.date)}
+														{mainClass?.batch} Batch&nbsp;&nbsp;|&nbsp;&nbsp;
+														{formatDate(mainClass?.date)}
 														&nbsp;&nbsp;|&nbsp;&nbsp;
-														{mainClass.time}
+														{mainClass?.time}
 													</CardDescription>
 												</CardHeader>
 											</>
@@ -215,7 +215,7 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 													size={"sm"}
 													className="text-sm w-full my-4"
 													onClick={() =>
-														openUrlInNewTab(mainClass.material_link)
+														openUrlInNewTab(mainClass?.material_link)
 													}
 												>
 													Download
@@ -262,8 +262,8 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 											{classes.map((cls: any, idx: number) => (
 												<TableRow key={idx}>
 													<TableCell>
-														<div>Week {cls.week_no}</div>
-														<div className="font-bold">{cls.topic}</div>
+														<div>Week {cls?.week_no}</div>
+														<div className="font-bold">{cls?.topic}</div>
 													</TableCell>
 													<TableCell className="hidden md:table-cell">
 														<Badge className="text-xs" variant="secondary">
@@ -271,11 +271,13 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 														</Badge>
 													</TableCell>
 													<TableCell className="hidden sm:table-cell">
-														{formatDate(cls.date)}
+														{formatDate(cls?.date)}
 													</TableCell>
 													<TableCell>
 														<Button
-															onClick={() => openUrlInNewTab(cls.material_link)}
+															onClick={() =>
+																openUrlInNewTab(cls?.material_link)
+															}
 															variant="outline"
 															size={"sm"}
 														>
@@ -318,7 +320,7 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 						</AlertTitle>
 						<AlertDescription>
 							<p className="text-gray-600">
-								If you believe this is an error, please reach out to the
+								If you believe this is an error, please reach out to your
 								instructor or email us at{" "}
 								<span className="font-semibold underline">
 									me@satyaswara.com
