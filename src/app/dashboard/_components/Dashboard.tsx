@@ -156,7 +156,7 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 											<>
 												<CardHeader className="pb-3">
 													<CardDescription className="max-w-lg text-balance leading-relaxed">
-														Today's Class
+														Today&apos;s Class
 													</CardDescription>
 													<CardTitle className="text-4xl">
 														Week {mainClass.week_no}: {mainClass.topic}
