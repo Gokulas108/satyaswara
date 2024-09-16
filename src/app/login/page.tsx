@@ -1,5 +1,7 @@
-const LoginPage = () => {
-	return <div>Login page</div>;
+import LoginForm from "./_components/LoginForm";
+
+const GoogleLoginPage = () => {
+	return <LoginForm />;
 };
 
-export default LoginPage;
+export default GoogleLoginPage;

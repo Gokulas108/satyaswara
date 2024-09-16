@@ -39,6 +39,34 @@ body {
 	}
 }
 
+.faaicon {
+	width: 1em;
+	height: 1em;
+	vertical-align: -0.125em;
+}
+
+.hanging-button {
+	position: absolute;
+	top: 1rem; /* Adjust as needed */
+	right: 1rem; /* Adjust as needed */
+}
+
+@media screen and (max-width: 600px) {
+	.hanging-button {
+		display: none;
+	}
+}
+
+.string {
+	position: absolute;
+	top: 0;
+	left: 1rem; /* Align with the button */
+	width: 2px; /* Adjust thickness */
+	height: 2rem; /* Adjust length */
+	background-color: #333; /* Color of the string */
+	transform: translateY(-50%);
+}
+
 .justify {
 	text-align: justify;
 	text-justify: inter-word;
