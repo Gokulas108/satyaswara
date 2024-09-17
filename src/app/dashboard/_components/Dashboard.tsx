@@ -90,7 +90,7 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 	};
 
 	const formatDate = (dateString: string) => {
-		const [year, month, day] = dateString.split("-"); // Split the string by "-"
+		const [year, month, day] = dateString?.split("-"); // Split the string by "-"
 		return `${day}-${month}-${year}`; // Rearrange the format to DD-MM-YYYY
 	};
 
@@ -137,8 +137,6 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 								>
 									Change Theme
 								</DropdownMenuItem>
-								<DropdownMenuItem>Support</DropdownMenuItem>
-								<DropdownMenuSeparator />
 								<DropdownMenuItem onClick={signOut}>Logout</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
@@ -210,17 +208,23 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 										<div className="flex flex-col">
 											<CardTitle>Materials for today</CardTitle>
 											{MCType === "today" ? (
-												<Button
-													variant="outline"
-													size={"sm"}
-													className="text-sm w-full my-4"
-													onClick={() =>
-														openUrlInNewTab(mainClass?.material_link)
-													}
-												>
-													Download
-													<Download className="ml-2 h-4 w-4" />
-												</Button>
+												mainClass?.material_link ? (
+													<Button
+														variant="outline"
+														size={"sm"}
+														className="text-sm w-full my-4"
+														onClick={() =>
+															openUrlInNewTab(mainClass?.material_link)
+														}
+													>
+														Download
+														<Download className="ml-2 h-4 w-4" />
+													</Button>
+												) : (
+													<CardDescription className="mt-6">
+														No Material
+													</CardDescription>
+												)
 											) : (
 												<CardDescription className="mt-6">
 													No Class Today
@@ -274,15 +278,17 @@ const Dashboard = ({ data, classes, enrolled }: any) => {
 														{formatDate(cls?.date)}
 													</TableCell>
 													<TableCell>
-														<Button
-															onClick={() =>
-																openUrlInNewTab(cls?.material_link)
-															}
-															variant="outline"
-															size={"sm"}
-														>
-															Download
-														</Button>
+														{cls?.material_link ? (
+															<Button
+																onClick={() =>
+																	openUrlInNewTab(cls?.material_link)
+																}
+																variant="outline"
+																size={"sm"}
+															>
+																Download
+															</Button>
+														) : null}
 													</TableCell>
 												</TableRow>
 											))}
